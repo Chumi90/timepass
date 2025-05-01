@@ -1,5 +1,5 @@
 const validatorMiddleware = (req, res, next) => {
-    const HOURACCES=12;
+    const HOURACCES=20;
     if (req.hours>=HOURACCES){
         req.validation=true; 
     }else{
