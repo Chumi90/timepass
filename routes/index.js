@@ -1,14 +1,17 @@
 const express=require("express");
 const route=express.Router();
+let path="/"
 
-/*
-    if(req.validation==true){
-        const path='/error';
-    }else{
-        const path='/';
-    }
-*/
+
 route.get('/',(req,res)=>{
+    const condicion=req.validation;
+    if(condicion==true){
+        path='/endroute';
+        console.log(path)
+    }else{
+        path='/error';
+        console.log(path)
+    }
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -20,11 +23,12 @@ route.get('/',(req,res)=>{
         <body>
             <h1>Bienvenido</h1>
             <p>La hora actual es: ${req.dateType}</p>
-            <button type="button" value="Entrar" onclick="location.href='/error'">Entrar</button>
+            <button type="button" value="Entrar" onclick="location.href='${path}'">Entrar</button>
         </body>
         </html>
         `);
 })
+
 route.get('/error',(req,res)=>{
     res.send(`
         <!DOCTYPE html>
@@ -43,10 +47,5 @@ route.get('/error',(req,res)=>{
         </html>
         `);
 })
-
-
-route.use((req, res) => {
-    res.status(404).json({error: "página no encontrada"})
-  })
 
   module.exports=route;

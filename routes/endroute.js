@@ -1,7 +1,7 @@
 const express=require("express");
 const endroute=express.Router();
 
-endroute.get("/endroute",(req,res)=>{
+endroute.get("/",(req,res)=>{
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -17,9 +17,5 @@ endroute.get("/endroute",(req,res)=>{
         </html>
         `);
 })
-
-endroute.use((req, res) => {
-    res.status(404).json({error: "página no encontrada"})
-  })
 
   module.exports=endroute;

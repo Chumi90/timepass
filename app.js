@@ -11,8 +11,9 @@ const finalRout=require("./routes/endroute");
 
 
 app.use(dateMiddleware,validatorMiddleware);
+
 app.use('/',mainRout);
-//app.use('/',finalRout);
+app.use('/endroute',finalRout);
 
 
 app.listen(PORT,()=>{
